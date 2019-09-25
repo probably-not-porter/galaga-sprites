@@ -26,8 +26,7 @@ def main():
                 colorBlock(i,j,pixels, colorList)
             else:
                 print('block empty')
-                whiteBlock(i,j,pixels)
-                blackBlock(i,j,pixels)
+                colorBlock(i,j,pixels, [(0, 0, 0)])
     
     pil_image = pil_image.rotate(180)
     pil_image.save('output' + '.png')
@@ -35,27 +34,7 @@ def main():
 
 def colorBlock(starting_x, starting_y,pixels, colors):
     print('creating block ' + str(starting_x) + ',' + str(starting_y) + '...')
-    color = colors[random.randint(0,numColors-1)]
-    for x in range(block_size):
-        target_x = starting_x * block_size + x
-        for y in range(block_size):
-            target_y = starting_y * block_size + y
-            pixels[target_x, target_y] = color
-            pixels[(width - 1) - target_x, target_y] = color
-
-def whiteBlock(starting_x, starting_y,pixels):
-    print('creating block ' + str(starting_x) + ',' + str(starting_y) + '...')
-    color = (255, 255, 255)
-    for x in range(block_size):
-        target_x = starting_x * block_size + x
-        for y in range(block_size):
-            target_y = starting_y * block_size + y
-            pixels[target_x, target_y] = color
-            pixels[(width - 1) - target_x, target_y] = color
-
-def blackBlock(starting_x, starting_y,pixels):
-    print('creating block ' + str(starting_x) + ',' + str(starting_y) + '...')
-    color = (0, 0, 0)
+    color = colors[random.randint(0,len(colors)-1)]
     for x in range(block_size):
         target_x = starting_x * block_size + x
         for y in range(block_size):
