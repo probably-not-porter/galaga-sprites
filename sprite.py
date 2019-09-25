@@ -4,7 +4,7 @@ import noise
 
 pix_width = 16
 pix_height = 16
-block_size = 10
+block_size = 20
 
 width = pix_height * block_size
 height = pix_height * block_size
@@ -26,7 +26,7 @@ def main():
                 colorBlock(i,j,pixels, colorList)
             else:
                 print('block empty')
-                #whiteBlock(i,j,pixels)
+                whiteBlock(i,j,pixels)
                 blackBlock(i,j,pixels)
     
     pil_image = pil_image.rotate(180)
