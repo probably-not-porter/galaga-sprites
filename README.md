@@ -11,6 +11,7 @@ python script that uses pillow to create galaga/galaxian style space ship sprite
 - `-d <n>` will make a sprite of n width and n height.
 - `-s <n>` will make each pixel of the sprite n by n pixels in the output image.
 - `-c <n>` will make a sprite with n different colors.
+- `-t <n>` will make a sprite with a body width of around n pixels
 
 ### Examples
 `$python sprite.py -d 16 -s 20 -c 3` 

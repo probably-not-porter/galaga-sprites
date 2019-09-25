@@ -5,6 +5,7 @@ import noise
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--dimension" , default=16, type=int)
+    parser.add_argument("-t", "--thickness" , default=2, type=int)
     parser.add_argument("-s", "--scale", default=20, type=int)
     parser.add_argument("-c", "--colors", default=3, type=int)
     args = parser.parse_args()
@@ -13,6 +14,7 @@ def main():
     pix_height = args.dimension
     block_size = args.scale
     numColors = args.colors
+    t = args.thickness
 
     width = pix_height * block_size
     height = pix_height * block_size
@@ -29,7 +31,7 @@ def main():
     
     for i in range(pil_image.size[0] / (block_size * 2)):
         for j in range(pil_image.size[1] / block_size):
-            decider = decideFill(i,j,pix_width, pix_height)
+            decider = decideFill(i,j,pix_width, pix_height,t)
             if decider:
                 colorBlock(i,j,pixels, colorList,block_size,width, height)
             else:
@@ -66,8 +68,8 @@ def genColor(color_list):
                         accept = True
     return color
 
-def decideFill(x,y,pix_width, pix_height):
-    if (random.randint(2,(pix_width/2)) < x) and (random.randint(1,(pix_height/2)) < y+(y/5)):
+def decideFill(x,y,pix_width, pix_height, t):
+    if (random.randint(2,(pix_width/2)) < x + t) and (random.randint(1,(pix_height/2)) < y+(y/3)):
         return True
     else:
         return False
