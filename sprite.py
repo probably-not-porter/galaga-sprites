@@ -4,11 +4,11 @@ import noise
 
 pix_width = 16
 pix_height = 16
-block_size = 20
+block_size = 10
 
 width = pix_height * block_size
 height = pix_height * block_size
-numColors = 4
+numColors = 3
 
 def main():
     pil_image = Image.new('RGBA', (width, height))
@@ -80,7 +80,7 @@ def genColor(color_list):
     return color
 
 def decideFill(x,y):
-    if random.randint(2,(pix_width/2)) < x + y/3:
+    if (random.randint(2,(pix_width/2)) < x) and (random.randint(1,(pix_height/2)) < y+(y/5)):
         return True
     else:
         return False
