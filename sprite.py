@@ -29,8 +29,8 @@ def main():
         color = genColor(colorList)
         colorList.append(color)
     
-    for i in range(pil_image.size[0] / (block_size * 2)):
-        for j in range(pil_image.size[1] / block_size):
+    for i in range(int(pil_image.size[0] / (block_size * 2))):
+        for j in range(int(pil_image.size[1] / block_size)):
             decider = decideFill(i,j,pix_width, pix_height,t)
             if decider:
                 colorBlock(i,j,pixels, colorList,block_size,width, height)
